@@ -1,0 +1,121 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Verdana, Tahoma, sans-serif;
+    font-size: 18px;
+}
+
+body {
+    min-width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 1.5rem;
+}
+
+h2 {
+    font-size: 1.2rem;
+}
+
+h3 {
+    margin: 5px 0;
+}
+
+.about-us__person {
+    height: auto;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: start;
+    align-items: start;
+}
+
+.about-us__person-age {
+    font-size: 1rem;
+}
+
+.about-us__person-position {
+    font-size: 1rem;
+}
+
+.faqs__question {
+    font-weight: bold;
+}
+
+.faqs__answer {
+    font-weight: normal;
+}
+
+header {
+    width: 100%;
+    height: 50px;
+    margin: 0;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: cadetblue;
+    color: white;
+    text-decoration: none;
+}
+
+nav {
+    width: max-content;
+    height: auto;
+    margin: 0;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    background-color: cadetblue;
+    color: white;
+    text-decoration: none;
+}
+
+a {
+    padding: 0 5px;
+    border-right: 1px white solid;
+    color: white;
+    text-decoration: none;
+}
+
+a.selected {
+    background-color: slategray;
+}
+
+.search {
+    width: max-content;
+    height: auto;
+    padding: 0 15px;
+}
+
+footer {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0.6rem;
+}
+
+.book-list {
+    width: 50%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+h4 {
+    width: 100%;
+}
+
+.book-list__blurb {
+    width: 75%;
+}
+
+img.book-list__cover {
+    width: 20%;
+    height: auto;
+    float: left;
+}
