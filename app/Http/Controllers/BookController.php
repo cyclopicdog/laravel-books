@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Models\Category;
+use App\Models\Author;
 
 class BookController extends Controller
 {
@@ -27,7 +29,11 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view('books\create');
+        $book = new Book();
+        $categories = Category::all();
+        $authors =Author::all();
+
+        return view('books\create', compact('book', 'categories', 'authors'));
     }
 
     /**
@@ -38,12 +44,23 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,
+        [
+            'title' => 'required',
+            'category' => 'required'
+        ],
+        [
+            'title.required' => 'Add the title dum dum!'
+        ]);
+
         $title = $request->input('title');
         $description = $request->input('description');
+        $category = $request->input('category');
 
         $book = new Book();
         $book->title = $title;
         $book->description = $description;
+        $book->category_id = $category;
         $book->save();
 
         session()->flash('success_message', 'The book was saved, yay!');
@@ -60,6 +77,7 @@ class BookController extends Controller
     public function show($id)
     {
         $book = Book::find($id);
+        
         return $book;
     }
 
@@ -72,6 +90,11 @@ class BookController extends Controller
     public function edit($id)
     {
         //
+        $book = Book::findOrFail($id);
+        $categories = Category::all();
+        $authors = Author::all();
+        
+        return view('\books\edit', compact('book', 'categories', 'authors'));
     }
 
     /**
@@ -84,6 +107,34 @@ class BookController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $authors_to_add = explode(' ', $request->input('add_authors'));
+        
+        $authors_to_remove = explode(' ', $request->input('remove_authors'));
+        // $this->validate($request,
+        // [
+        //     'title' => 'required',
+        //     'category' => 'required'
+        // ],
+        // [
+        //     'title.required' => 'Add the title dum dum!'
+        // ]);  
+        
+        $book = Book::findOrFail($id);
+        
+        $book->authors()->sync($authors_to_add);   
+
+        
+        $book->title = $request->input('title');
+        $book->description = $request->input('description');
+        $book->category_id = $request->input('category');
+        $book->save();
+        
+
+
+        session()->flash('success_message', 'The book was updated, yay!');
+
+        return redirect()->action('BookController@index');
+        
     }
 
     /**

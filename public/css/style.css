@@ -4,7 +4,7 @@
 
 html {
     font-family: Verdana, Tahoma, sans-serif;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 body {
@@ -118,4 +118,30 @@ img.book-list__cover {
     width: 20%;
     height: auto;
     float: left;
+}
+
+.authors-change {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.authors-change__list-box {
+    width: 100%;
+    margin: 10px;
+}
+
+li {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 5px;
+}
+
+li.add-remove {
+    display: grid;
+    grid-template-columns: 40% 25% 25%;
+    gap: 5px;
+}
+
+button {
+    display: inline-block;
 }

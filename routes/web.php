@@ -36,9 +36,19 @@ Route::get( '/books', 'BookController@index');
 Route::get('/books/create', 'BookController@create');
 Route::post('/books', 'BookController@store');
 
+// edit book
+Route::get('/books/{id}/edit', 'BookController@edit');
+Route::put('/books/{id}', 'BookController@update');
+
+// delete book
+Route::get('/books/{id}/delete', 'BookController@delete');
+Route::post('/books/{id}/', 'BookController@destroy');
+
 // route for search
 Route::get('/books/search', 'BookController@search');
 Route::post('/books/search', 'BookController@handleSearch');
+
+
 
 // retrieving a book
 

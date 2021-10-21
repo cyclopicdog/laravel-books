@@ -10,6 +10,7 @@
 <body>
 @include('/common/navigation', ['page' => $page])
 <main>
+@include('common/errors')
 @yield('content', $title)
 </main>
 </body>
