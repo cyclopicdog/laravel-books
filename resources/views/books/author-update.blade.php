@@ -1,16 +1,9 @@
-<h5>Book's authors:</h5>
-  <ul>
-      @foreach($book->authors as $author)
-      <li class="book-list__author">{{ $author->name}}</li>
-      @endforeach
-  </ul>
-
 <input type="hidden" name="add_authors" value="" id="add_authors">
 <input type="hidden" name="remove_authors" value="" id="remove_authors">
 
 <div class="authors-change">
   <div class="authors-change__list-box">
-    <h4>Updated authors list (add all authors)</h4>
+    <h4>Authors:</h4>
       <ul class="authors-change__add">
       </ul>
   </div>
@@ -18,7 +11,7 @@
 </div>
 
 
-<label for="findRichy">search available authors:</label>
+<label for="findAuthor">search available authors:</label>
             <input
                 type="text"
                 name="findAuthor"
@@ -143,7 +136,7 @@ function removeFromList (id) {
   for(let i = 0; i < authorAdd.length; i++) {
     console.log('This is the loop, i =' + i);
     console.log(id);
-    if(id === authorAdd[i]) {
+    if(id == authorAdd[i]) {
       authorAdd.splice(i, 1);
       console.log(i);
     }
@@ -181,9 +174,15 @@ addToBookButton.forEach((element, index) => {
 
 
 
-
 </script>
 
+@foreach($book->authors as $author)
+  
+<script>addToList({{$author->id}});
+console.log({{$author->id}})
+</script>
+
+@endforeach
 
 
 

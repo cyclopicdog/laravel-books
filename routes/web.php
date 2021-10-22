@@ -40,9 +40,6 @@ Route::post('/books', 'BookController@store');
 Route::get('/books/{id}/edit', 'BookController@edit');
 Route::put('/books/{id}', 'BookController@update');
 
-// delete book
-Route::get('/books/{id}/delete', 'BookController@delete');
-Route::post('/books/{id}/', 'BookController@destroy');
 
 // route for search
 Route::get('/books/search', 'BookController@search');

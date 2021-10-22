@@ -121,6 +121,7 @@ img.book-list__cover {
 }
 
 .authors-change {
+    width: 100%;
     display: flex;
     justify-content: space-evenly;
 }

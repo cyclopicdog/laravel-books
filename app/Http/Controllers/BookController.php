@@ -110,14 +110,17 @@ class BookController extends Controller
         $authors_to_add = explode(' ', $request->input('add_authors'));
         
         $authors_to_remove = explode(' ', $request->input('remove_authors'));
-        // $this->validate($request,
-        // [
-        //     'title' => 'required',
-        //     'category' => 'required'
-        // ],
-        // [
-        //     'title.required' => 'Add the title dum dum!'
-        // ]);  
+        $this->validate($request,
+        [
+            'title' => 'required',
+            'add_authors' => 'required',
+            'category' => 'required'
+        ],
+        [
+            'title.required' => 'Add the title dum dum!',
+            
+            'category.required' => 'Must assign a category'
+        ]);  
         
         $book = Book::findOrFail($id);
         
